@@ -24,4 +24,15 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>mosaic-releases</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-releases</url>
+        </repository>
+        <repository>
+            <id>mosaic-snapshots</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-snapshots</url>
+        </repository>
+    </repositories>
+
 </project>

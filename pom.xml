@@ -21,6 +21,10 @@
         <module>base</module>
     </modules>
 
+    <properties>
+        <webserver.url>http://mosaic4cap.de/</webserver.url>
+    </properties>
+
     <dependencies>
         <!-- spring boot start-->
         <dependency>
@@ -36,10 +40,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-actuator</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -113,6 +117,12 @@
             <version>2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
         <!-- database related dependencies -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -165,4 +175,15 @@
             <url>http://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>mosaic-releases</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>mosaic-snapshots</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

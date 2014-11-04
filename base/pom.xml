@@ -27,4 +27,15 @@
             <version>4.0.6.RELEASE</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>mosaic-releases</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>mosaic-snapshots</id>
+            <url>${webserver.url}/nexus/content/repositories/mosaic-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
