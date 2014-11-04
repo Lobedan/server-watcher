@@ -10,6 +10,9 @@ package de.server.watcher;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Created by svenklemmer on 04.11.14.
+ */
 public class StatusWatcher {
   private static final Logger LOGGER = Logger.getLogger(StatusWatcher.class);
 }
