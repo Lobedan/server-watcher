@@ -9,19 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>server-watcher-client</artifactId>
+    <artifactId>server-watcher-base</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 
     <properties>
-        <start-class>de.server.watcher.ClientApplication</start-class>
+        <start-class>de.server.watcher.BaseApplication</start-class>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>lobedan</groupId>
-            <artifactId>server-watcher-base</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.0.6.RELEASE</version>
         </dependency>
     </dependencies>
-
 </project>

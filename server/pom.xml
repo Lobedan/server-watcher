@@ -10,6 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>server-watcher-server</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
 
+    <properties>
+        <start-class>de.server.watcher.ServerApplication</start-class>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>lobedan</groupId>
+            <artifactId>server-watcher-base</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

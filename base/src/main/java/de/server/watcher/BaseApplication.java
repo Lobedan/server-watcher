@@ -8,21 +8,21 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by svenklemmer on 03.11.14.
+ * Created by svenklemmer on 04.11.14.
  */
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class ServerApplication extends SpringBootServletInitializer {
+public class BaseApplication extends SpringBootServletInitializer {
 
   //CHECKSTYLE:OFF
   public static void main(String[] args) throws Exception {
-    SpringApplication.run(ServerApplication.class, args);
+    SpringApplication.run(BaseApplication.class, args);
   }
 
   @Override
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-    return application.sources(ServerApplication.class);
+    return application.sources(BaseApplication.class);
   }
   //CHECKSTYLE:ON
 }
