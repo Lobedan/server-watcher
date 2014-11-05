@@ -47,7 +47,7 @@ public abstract class AbstractDetector {
 
   public Map<String, String> watchLinux() throws Exception {
     String commandOutput = CommandLineUtils.execToString(LINUX_COMMAND[0]);
-    commandOutput = commandOutput + "\n " + CommandLineUtils.execToString(LINUX_COMMAND[1]).trim();
+    commandOutput = commandOutput + "\n " + CommandLineUtils.execToString(LINUX_COMMAND[1]);
     return createMap(commandOutput.trim());
   }
 
@@ -61,7 +61,7 @@ public abstract class AbstractDetector {
     StringTokenizer st = new StringTokenizer(input, "\n");
     while (st.hasMoreTokens()) {
       String[] array = st.nextToken().split(tokendelimiter);
-      sysPropeties.put(array[0], array[1].trim());
+      sysPropeties.put(array[0].trim(), array[1].trim());
     }
     return sysPropeties;
   }
