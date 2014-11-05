@@ -51,7 +51,7 @@ public class CpuDetector extends AbstractDetector {
       LOGGER.error(propertiesMap);
       cpu
           .setBrand(propertiesMap.get("model name"))
-          .setCores(Integer.valueOf(propertiesMap.get("Core(s) per socket")))
+          .setCores(Integer.valueOf(propertiesMap.get("cpu cores")))
           .setVirtualCores(cpu.getCores())
           .setCpuFrequency(convertMhzToGHz(propertiesMap.get("CPU MHz")))
           .setMaxCpuFrequency(cpu.getCpuFrequency())
