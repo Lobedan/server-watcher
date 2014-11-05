@@ -11,6 +11,9 @@ package de.server.watcher.base.detector;
 import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
+import de.server.watcher.base.domain.Os;
+import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 /**
  * Created by svenklemmer on 04.11.14.
@@ -21,6 +24,13 @@ public class OsDetector extends AbstractDetector {
 
   @Override
   public void detect() {
-    LOGGER.info("Detect @ OS");
+    Result r = DetectorResultMetaHolder.instance().get();
+    Os os = new Os();
+      os
+          .setName(System.getProperty("os.name"))
+          .setVersion(System.getProperty("os.version"))
+          .setArchitecture(System.getProperty("os.arch"));
+    r.setOs(os);
+    LOGGER.debug("Detected OS Information: " + os);
   }
 }

@@ -30,7 +30,7 @@ public class JvmDetectorTest {
   }
 
   @Test
-  public void testCanDetectCpu() throws Exception {
+  public void testCanDetectJVM() throws Exception {
     detector.detect();
 
     assertThat(holder.get(), is(notNullValue()));
@@ -39,5 +39,4 @@ public class JvmDetectorTest {
     assertThat(jvm.getJavaVersion(), is(System.getProperty("java.version")));
     assertThat(jvm.getJavaHome(), is(System.getProperty("java.home")));
   }
-
 }
