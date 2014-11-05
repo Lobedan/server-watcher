@@ -18,6 +18,6 @@ import de.server.watcher.base.annotation.Reporter;
  */
 @Reporter
 public abstract class AbstractReporter {
-  abstract void prepare();
-  abstract void send();
+  public abstract void prepare();
+  public abstract void sendReport();
 }

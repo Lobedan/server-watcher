@@ -1,10 +1,12 @@
 package de.server.watcher.base.tasks;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import de.server.watcher.base.annotation.ScheduledTask;
+import de.server.watcher.base.service.DetectorService;
 
 /**
  * Created by svenklemmer on 04.11.14.
@@ -19,11 +21,15 @@ import de.server.watcher.base.annotation.ScheduledTask;
  */
 @EnableScheduling
 @ScheduledTask
-public class CollectorService {
-  private static final Logger LOGGER = Logger.getLogger(CollectorService.class);
+public class CollectorTask {
+  private static final Logger LOGGER = Logger.getLogger(CollectorTask.class);
+
+  @Autowired
+  private DetectorService detectorService;
 
   @Scheduled(fixedRate = 30 * 1000)
   public void collectData() {
+
 
   }
 }

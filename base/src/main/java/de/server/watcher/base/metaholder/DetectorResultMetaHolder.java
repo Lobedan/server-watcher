@@ -6,9 +6,11 @@
  *
  * Copyright (C) 2007-2008 Ippen Digital GmbH & Co. KG / Munich / Germany
  */
-package de.server.watcher.base.domain;
+package de.server.watcher.base.metaholder;
 
 import org.springframework.context.annotation.Scope;
+
+import de.server.watcher.base.domain.Result;
 
 /**
  * Created by svenklemmer on 04.11.14.

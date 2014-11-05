@@ -10,9 +10,17 @@ package de.server.watcher.base.detector;
 
 import org.apache.log4j.Logger;
 
+import de.server.watcher.base.annotation.Detector;
+
 /**
  * Created by svenklemmer on 04.11.14.
  */
+@Detector
 public class NetworkDetector extends AbstractDetector {
   private static final Logger LOGGER = Logger.getLogger(NetworkDetector.class);
+
+  @Override
+  public void detect() {
+    LOGGER.info("Detect @ Network");
+  }
 }

@@ -18,4 +18,6 @@ import de.server.watcher.base.annotation.Detector;
  */
 @Detector
 public abstract class AbstractDetector {
+  public abstract void detect();
+
 }

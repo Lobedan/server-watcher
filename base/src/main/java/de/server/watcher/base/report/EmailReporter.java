@@ -9,12 +9,13 @@
 package de.server.watcher.base.report;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
+
+import de.server.watcher.base.annotation.Reporter;
 
 /**
  * Created by svenklemmer on 04.11.14.
  */
-@Service(value = "email")
+@Reporter
 public class EmailReporter extends AbstractReporter {
   private static final Logger LOGGER = Logger.getLogger(EmailReporter.class);
 
@@ -24,7 +25,7 @@ public class EmailReporter extends AbstractReporter {
   }
 
   @Override
-  public void send() {
+  public void sendReport() {
 
   }
 }
