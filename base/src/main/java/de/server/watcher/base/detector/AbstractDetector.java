@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
 
 import com.google.common.collect.Maps;
 
-import org.apache.commons.exec.DefaultExecutor;
 import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
@@ -28,8 +27,6 @@ import de.server.watcher.utils.CommandLineUtils;
 @Detector
 public abstract class AbstractDetector {
   private static final Logger LOGGER = Logger.getLogger(AbstractDetector.class);
-
-  private DefaultExecutor executor;
 
   private static final String MAC_COMMAND = "sysctl machdep hw";
   private static final String[] LINUX_COMMAND = { "lscpu", "cat /proc/cpuinfo" };
