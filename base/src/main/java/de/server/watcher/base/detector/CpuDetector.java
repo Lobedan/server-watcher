@@ -57,8 +57,7 @@ public class CpuDetector extends AbstractDetector {
           .setBit64((propertiesMap.get("CPU op-mode(s)").contains("64")))
           .setArchitecture(propertiesMap.get("Architecture"));
     }
-    LOGGER.info(cpu);
-
+    LOGGER.debug("Detected Cpu Information: " + cpu);
     r.setCpu(cpu);
   }
 
@@ -78,73 +77,4 @@ public class CpuDetector extends AbstractDetector {
     f /= 1000;
     return f + " Ghz";
   }
-
-  /*
-
--- listing properties --
-java.runtime.name=Java(TM) SE Runtime Environment
-sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk...
-java.vm.version=24.45-b08
-gopherProxySet=false
-java.vm.vendor=Oracle Corporation
-java.vendor.url=http://java.oracle.com/
-path.separator=:
-java.vm.name=Java HotSpot(TM) 64-Bit Server VM
-file.encoding.pkg=sun.io
-idea.launcher.port=7536
-user.country=DE
-sun.java.launcher=SUN_STANDARD
-sun.os.patch.level=unknown
-java.vm.specification.name=Java Virtual Machine Specification
-user.dir=/Users/svenklemmer/Development/server...
-java.runtime.version=1.7.0_45-b18
-java.awt.graphicsenv=sun.awt.CGraphicsEnvironment
-java.endorsed.dirs=/Library/Java/JavaVirtualMachines/jdk...
-os.arch=x86_64
-java.io.tmpdir=/var/folders/cb/015cgh3s78d_5cctdnv65...
-line.separator=
-
-java.vm.specification.vendor=Oracle Corporation
-os.name=Mac OS X
-sun.jnu.encoding=UTF-8
-java.library.path=/Users/svenklemmer/Library/Java/Exten...
-java.specification.name=Java Platform API Specification
-java.class.version=51.0
-sun.management.compiler=HotSpot 64-Bit Tiered Compilers
-os.version=10.10
-http.nonProxyHosts=local|*.local|169.254/16|*.169.254/16
-user.home=/Users/svenklemmer
-user.timezone=Europe/Berlin
-java.awt.printerjob=sun.lwawt.macosx.CPrinterJob
-java.specification.version=1.7
-file.encoding=UTF-8
-idea.launcher.bin.path=/Applications/IntelliJ IDEA 14.app/Co...
-user.name=svenklemmer
-java.class.path=/Applications/IntelliJ IDEA 14.app/Co...
-java.vm.specification.version=1.7
-sun.arch.data.model=64
-java.home=/Library/Java/JavaVirtualMachines/jdk...
-sun.java.command=com.intellij.rt.execution.application...
-java.specification.vendor=Oracle Corporation
-user.language=de
-awt.toolkit=sun.lwawt.macosx.LWCToolkit
-java.vm.info=mixed mode
-java.version=1.7.0_45
-java.ext.dirs=/Users/svenklemmer/Library/Java/Exten...
-sun.boot.class.path=/Library/Java/JavaVirtualMachines/jdk...
-java.vendor=Oracle Corporation
-file.separator=/
-java.vendor.url.bug=http://bugreport.sun.com/bugreport/
-sun.cpu.endian=little
-sun.io.unicode.encoding=UnicodeBig
-socksNonProxyHosts=local|*.local|169.254/16|*.169.254/16
-ftp.nonProxyHosts=local|*.local|169.254/16|*.169.254/16
-sun.cpu.isalist=
-Total CPU:4
-Max Memory:1908932608
-available Memory:112329576
-os.name=Mac OS X
-
-
-  */
 }

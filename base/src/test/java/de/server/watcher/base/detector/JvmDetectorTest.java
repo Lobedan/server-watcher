@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import de.server.watcher.base.domain.Cpu;
+import de.server.watcher.base.domain.Jvm;
 import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -17,25 +17,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by svenklemmer on 05.11.14.
  */
 @RunWith(JUnit4.class)
-public class CpuDetectorTest {
-  private static final Logger LOGGER = Logger.getLogger(CpuDetectorTest.class);
+public class JvmDetectorTest {
+  private static final Logger LOGGER = Logger.getLogger(JvmDetectorTest.class);
 
-  private CpuDetector cpuDetector;
+  private JvmDetector detector;
   private DetectorResultMetaHolder holder;
 
   @Before
   public void setup() {
-    cpuDetector = new CpuDetector();
+    detector = new JvmDetector();
     holder = DetectorResultMetaHolder.recreate();
   }
 
   @Test
   public void testCanDetectCpu() throws Exception {
-    cpuDetector.detect();
+    detector.detect();
 
     assertThat(holder.get(), is(notNullValue()));
-    Cpu cpu = holder.get().getCpu();
-    assertThat(cpu, is(notNullValue()));
+    Jvm jvm = holder.get().getJvm();
+    assertThat(jvm, is(notNullValue()));
+    assertThat(jvm.getJavaVersion(), is(System.getProperty("java.version")));
+    assertThat(jvm.getJavaHome(), is(System.getProperty("java.home")));
   }
 
 }

@@ -16,9 +16,23 @@ public class JvmDetector extends AbstractDetector {
 
   @Override
   public void detect() {
+    Result r = DetectorResultMetaHolder.instance().get();
     Jvm jvm = new Jvm();
 
-    Result r = DetectorResultMetaHolder.instance().get();
+    jvm
+        .setJavaRuntimeName(System.getProperty("java.runtime.name"))
+        .setJavaVMName(System.getProperty("java.vm.name"))
+
+        .setJavaVersion(System.getProperty("java.version"))
+        .setJavaRuntimeVersion(System.getProperty("java.runtime.version"))
+        .setJavaVMVersion(System.getProperty("java.vm.version"))
+
+        .setJavaTmpDir(System.getProperty("java.io.tmpdir"))
+        .setJavaClassVersion(System.getProperty("java.class.version"))
+        .setJavaVMSpec(System.getProperty("java.vm.specification.version"))
+        .setJavaHome(System.getProperty("java.home"));
+
+    LOGGER.debug("Detected JVM Information: " + jvm);
     r.setJvm(jvm);
   }
 }
