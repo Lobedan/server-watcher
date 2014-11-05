@@ -48,6 +48,7 @@ public class CpuDetector extends AbstractDetector {
       //TODO: detect properties on windows
     } else {
       propertiesMap = super.watchLinux();
+      LOGGER.error(propertiesMap);
       cpu
           .setBrand(propertiesMap.get("model name"))
           .setCores(Integer.valueOf(propertiesMap.get("Core(s) per socket")))
