@@ -47,8 +47,8 @@ public abstract class AbstractDetector {
 
   public Map<String, String> watchLinux() throws Exception {
     String commandOutput = CommandLineUtils.execToString(LINUX_COMMAND[0]);
-    commandOutput = commandOutput + "\n " + CommandLineUtils.execToString(LINUX_COMMAND[1]);
-    return createMap(commandOutput);
+    commandOutput = commandOutput + "\n " + CommandLineUtils.execToString(LINUX_COMMAND[1]).trim();
+    return createMap(commandOutput.trim());
   }
 
   private Map<String, String> createMap(String input) {

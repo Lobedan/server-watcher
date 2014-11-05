@@ -49,14 +49,14 @@ public class CpuDetector extends AbstractDetector {
     } else {
       propertiesMap = super.watchLinux();
       LOGGER.error(propertiesMap);
-      /*cpu
+      cpu
           .setBrand(propertiesMap.get("model name"))
           .setCores(Integer.valueOf(propertiesMap.get("Core(s) per socket")))
           .setVirtualCores(cpu.getCores())
           .setCpuFrequency(convertMhzToGHz(propertiesMap.get("CPU MHz")))
           .setMaxCpuFrequency(cpu.getCpuFrequency())
           .setBit64((propertiesMap.get("CPU op-mode(s)").contains("64")))
-          .setArchitecture(propertiesMap.get("Architecture"));*/
+          .setArchitecture(propertiesMap.get("Architecture"));
     }
     LOGGER.debug("Detected Cpu Information: " + cpu);
     r.setCpu(cpu);
