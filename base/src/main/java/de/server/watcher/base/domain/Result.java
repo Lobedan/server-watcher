@@ -1,15 +1,17 @@
 package de.server.watcher.base.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Created by svenklemmer on 04.11.14.
- *
+ * <p/>
  * Holds all data from all objects
  */
 public class Result {
   private Cpu cpu;
   private Hardware hardware;
+
+  private Jvm jvm;
 
   private Memory memory;
   private Network network;
@@ -17,25 +19,18 @@ public class Result {
   private Os os;
   private Storage storage;
 
-  public Result() { }
+  public Result() {
+  }
 
-  public Result(Cpu aCpu,
-                Hardware aHardware,
-                Memory aMemory,
-                Network aNetwork,
-                Os aOs,
-                Storage aStorage) {
+  public Jvm getJvm() {
+    return jvm;
+  }
 
-    cpu = aCpu;
-    hardware = aHardware;
-    memory = aMemory;
-    network = aNetwork;
-    os = aOs;
-    storage = aStorage;
+  public void setJvm(Jvm aJvm) {
+    jvm = aJvm;
   }
 
   public Cpu getCpu() {
-
     return cpu;
   }
 
@@ -91,13 +86,15 @@ public class Result {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-
     Result result = (Result) o;
 
     if (cpu != null ? !cpu.equals(result.cpu) : result.cpu != null) {
       return false;
     }
     if (hardware != null ? !hardware.equals(result.hardware) : result.hardware != null) {
+      return false;
+    }
+    if (jvm != null ? !jvm.equals(result.jvm) : result.jvm != null) {
       return false;
     }
     if (memory != null ? !memory.equals(result.memory) : result.memory != null) {
@@ -112,7 +109,6 @@ public class Result {
     if (storage != null ? !storage.equals(result.storage) : result.storage != null) {
       return false;
     }
-
     return true;
   }
 
@@ -120,6 +116,7 @@ public class Result {
   public int hashCode() {
     int result = cpu != null ? cpu.hashCode() : 0;
     result = 31 * result + (hardware != null ? hardware.hashCode() : 0);
+    result = 31 * result + (jvm != null ? jvm.hashCode() : 0);
     result = 31 * result + (memory != null ? memory.hashCode() : 0);
     result = 31 * result + (network != null ? network.hashCode() : 0);
     result = 31 * result + (os != null ? os.hashCode() : 0);
@@ -132,6 +129,7 @@ public class Result {
     return new ToStringBuilder(this)
         .append("cpu", cpu)
         .append("hardware", hardware)
+        .append("jvm", jvm)
         .append("memory", memory)
         .append("network", network)
         .append("os", os)

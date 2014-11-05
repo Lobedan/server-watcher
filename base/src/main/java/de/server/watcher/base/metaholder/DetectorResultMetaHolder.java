@@ -21,7 +21,7 @@ import de.server.watcher.base.domain.Result;
  * while collecting data
  */
 @Scope(value = "singleton")
-public class DetectorResultMetaHolder {
+public final class DetectorResultMetaHolder {
   private static DetectorResultMetaHolder unique;
 
   private Result result;
@@ -29,7 +29,9 @@ public class DetectorResultMetaHolder {
   /**
    * private constructor to prevent creating new instance
    */
-  private DetectorResultMetaHolder() { }
+  private DetectorResultMetaHolder() {
+    result = new Result();
+  }
 
   /**
    * if there is no instance available create a new one

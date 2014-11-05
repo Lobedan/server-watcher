@@ -40,8 +40,12 @@ public class DefaultDetectorService implements DetectorService {
       new Thread(new Runnable() {
         @Override
         public void run() {
-          LOGGER.info("Running in thread " + Thread.currentThread());
-          a.detect();
+          try {
+            LOGGER.info("Running in thread " + Thread.currentThread());
+            a.detect();
+          } catch(Exception e) {
+            LOGGER.error(e);
+          }
         }
       }).start();
     }
