@@ -16,11 +16,11 @@ public class ServerReporter extends AbstractReporter {
 
   @Override
   public void prepare() {
-
+    LOGGER.debug("prepare @ ServerReporter");
   }
 
   @Override
   public void sendReport() {
-
+    LOGGER.debug("send @ SendReporter");
   }
 }

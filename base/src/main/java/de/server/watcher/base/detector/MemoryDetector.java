@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
 import de.server.watcher.base.domain.Memory;
-import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.domain.DetectorResult;
 import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 /**
@@ -28,7 +28,7 @@ public class MemoryDetector extends AbstractDetector {
 
   @Override
   public void detect() throws Exception {
-    Result r = DetectorResultMetaHolder.instance().get();
+    DetectorResult r = DetectorResultMetaHolder.instance().get();
     Memory mem = new Memory();
 
     Map<String, String> propertiesMap;

@@ -1,4 +1,7 @@
-package de.server.watcher.base.tasks;
+package de.server.watcher.client;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import de.server.watcher.base.annotation.ScheduledTask;
+import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 import de.server.watcher.base.service.DetectorService;
+import de.server.watcher.base.service.ReporterService;
 
 /**
  * Created by svenklemmer on 04.11.14.
@@ -27,9 +32,18 @@ public class CollectorTask {
   @Autowired
   private DetectorService detectorService;
 
+  @Autowired
+  private ReporterService reporterService;
+
   @Scheduled(fixedRate = 30 * 1000)
-  public void collectData() {
-
-
+  public void collectData() throws Exception {
+    String actualDate = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date());
+    LOGGER.info("Start to collect Data @" + actualDate);
+    detectorService.execute();
+    if (DetectorResultMetaHolder.instance().get() == null) {
+      LOGGER.debug(DetectorResultMetaHolder.instance().get());
+      LOGGER.info("Collected data successfully invoking reporters");
+      reporterService.execute();
+    }
   }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.domain.DetectorResult;
 
 /**
  * Created by svenklemmer on 04.11.14.
@@ -31,7 +31,7 @@ public class ReportController {
       method = RequestMethod.PUT,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
-  public HttpStatus receive(Result payload) throws Exception {
+  public HttpStatus receive(DetectorResult payload) throws Exception {
 
     return HttpStatus.ACCEPTED;
   }

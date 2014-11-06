@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
 import de.server.watcher.base.domain.Cpu;
-import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.domain.DetectorResult;
 import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 /**
@@ -26,7 +26,7 @@ public class CpuDetector extends AbstractDetector {
 
   @Override
   public void detect() throws Exception {
-    Result r = DetectorResultMetaHolder.instance().get();
+    DetectorResult r = DetectorResultMetaHolder.instance().get();
     Cpu cpu = new Cpu();
 
     Map<String, String> propertiesMap;

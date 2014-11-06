@@ -21,11 +21,11 @@ public class ConsoleReporter extends AbstractReporter {
 
   @Override
   public void prepare() {
-
+    LOGGER.debug("prepare @ ConsoleReporter");
   }
 
   @Override
   public void sendReport() {
-
+    LOGGER.debug("send @ ConsoleReporter");
   }
 }

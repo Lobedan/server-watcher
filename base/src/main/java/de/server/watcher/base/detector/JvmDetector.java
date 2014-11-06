@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
 import de.server.watcher.base.domain.Jvm;
-import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.domain.DetectorResult;
 import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 /**
@@ -16,7 +16,7 @@ public class JvmDetector extends AbstractDetector {
 
   @Override
   public void detect() {
-    Result r = DetectorResultMetaHolder.instance().get();
+    DetectorResult r = DetectorResultMetaHolder.instance().get();
     Jvm jvm = new Jvm();
 
     jvm

@@ -8,29 +8,30 @@
  */
 package de.server.watcher.base.metaholder;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.context.annotation.Scope;
 
-import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.domain.DetectorResult;
 
 /**
  * Created by svenklemmer on 04.11.14.
  *
  * Singleton to hold only one instance of results
  *
- * it holts the {@link de.server.watcher.base.domain.Result} object
+ * it holts the {@link de.server.watcher.base.domain.DetectorResult} object
  * while collecting data
  */
 @Scope(value = "singleton")
 public final class DetectorResultMetaHolder {
   private static DetectorResultMetaHolder unique;
 
-  private Result result;
+  private DetectorResult detectorResult;
 
   /**
    * private constructor to prevent creating new instance
    */
   private DetectorResultMetaHolder() {
-    result = new Result();
+    detectorResult = new DetectorResult();
   }
 
   /**
@@ -45,30 +46,31 @@ public final class DetectorResultMetaHolder {
   }
 
   /**
-   * @return existing result object
+   * @return existing detectorresult object
    */
-  public Result get() {
-    return result;
+  public DetectorResult get() {
+    return detectorResult;
+  }
+
+
+  /**
+   * Set DetectorResult object instead of existing one
+   * @param aDetectorResult result object to set
+   */
+  public void set(DetectorResult aDetectorResult) {
+    detectorResult = aDetectorResult;
   }
 
   /**
-   * Set result object instead of existing one
-   * @param res result object to set
-   */
-  public void set(Result res) {
-    this.result = res;
-  }
-
-  /**
-   * Merges two {@link de.server.watcher.base.domain.Result} objects, checks if there fields are equal
+   * Merges two {@link de.server.watcher.base.domain.DetectorResult} objects, checks if there fields are equal
    * if they are then check category, decide which to choose and store it
    * if thery are not then insert missing fields to a new object
    *
    * @param res to merge into holding result object
    * @return merged Result object
    */
-  public Result merge (Result res) {
-    return new Result();
+  public DetectorResult merge (DetectorResult res) {
+    return new DetectorResult();
   }
 
   /**
@@ -76,8 +78,8 @@ public final class DetectorResultMetaHolder {
    * and allocates a new one
    */
   public void clear() {
-    result = null;
-    result = new Result();
+    detectorResult = null;
+    detectorResult = new DetectorResult();
   }
 
   /**
@@ -91,5 +93,12 @@ public final class DetectorResultMetaHolder {
       unique = null;
     }
     return instance();
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this)
+        .append("DetectorResult", detectorResult)
+        .toString();
   }
 }

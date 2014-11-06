@@ -26,6 +26,7 @@ public class DefaultReporterService implements ReporterService {
 
   @Override
   public void execute() throws Exception {
+    LOGGER.info("Running Reporter");
     for (final AbstractReporter a : reporter) {
       new Thread(new Runnable() {
         @Override

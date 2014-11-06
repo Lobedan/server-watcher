@@ -21,11 +21,11 @@ public class EmailReporter extends AbstractReporter {
 
   @Override
   public void prepare() {
-
+    LOGGER.debug("prepare @ EmailReporter");
   }
 
   @Override
   public void sendReport() {
-
+    LOGGER.debug("send @ EmailReporter");
   }
 }

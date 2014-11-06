@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * <p/>
  * Holds all data from all objects
  */
-public class Result {
+public class DetectorResult {
   private Cpu cpu;
   private Hardware hardware;
 
@@ -19,7 +19,7 @@ public class Result {
   private Os os;
   private Storage storage;
 
-  public Result() {
+  public DetectorResult() {
   }
 
   public Jvm getJvm() {
@@ -86,27 +86,27 @@ public class Result {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Result result = (Result) o;
+    DetectorResult detectorResult = (DetectorResult) o;
 
-    if (cpu != null ? !cpu.equals(result.cpu) : result.cpu != null) {
+    if (cpu != null ? !cpu.equals(detectorResult.cpu) : detectorResult.cpu != null) {
       return false;
     }
-    if (hardware != null ? !hardware.equals(result.hardware) : result.hardware != null) {
+    if (hardware != null ? !hardware.equals(detectorResult.hardware) : detectorResult.hardware != null) {
       return false;
     }
-    if (jvm != null ? !jvm.equals(result.jvm) : result.jvm != null) {
+    if (jvm != null ? !jvm.equals(detectorResult.jvm) : detectorResult.jvm != null) {
       return false;
     }
-    if (memory != null ? !memory.equals(result.memory) : result.memory != null) {
+    if (memory != null ? !memory.equals(detectorResult.memory) : detectorResult.memory != null) {
       return false;
     }
-    if (network != null ? !network.equals(result.network) : result.network != null) {
+    if (network != null ? !network.equals(detectorResult.network) : detectorResult.network != null) {
       return false;
     }
-    if (os != null ? !os.equals(result.os) : result.os != null) {
+    if (os != null ? !os.equals(detectorResult.os) : detectorResult.os != null) {
       return false;
     }
-    if (storage != null ? !storage.equals(result.storage) : result.storage != null) {
+    if (storage != null ? !storage.equals(detectorResult.storage) : detectorResult.storage != null) {
       return false;
     }
     return true;
