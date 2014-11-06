@@ -41,16 +41,17 @@ public class MemoryDetector extends AbstractDetector {
       }
       propertiesMap.putAll(super.watchMac());
       mem
-          .setFreeMemSize(convertMbToGb(propertiesMap.get("Pages free")))
-          .setUsedMemSize(convertMbToGb(propertiesMap.get("Pages active")))
-          .setMaxMemSize(convertMbToGb(propertiesMap.get("hw.memsize")));
+          .setFreeMemSize(propertiesMap.get("Pages free"))
+          .setUsedMemSize(propertiesMap.get("Pages active"))
+          .setMaxMemSize(propertiesMap.get("hw.memsize"));
 
     } else if (osName.contains("Windows")) {
       propertiesMap = super.watchWindows();
       //TODO: detect properties on windows
     } else {
       propertiesMap = super.watchLinux();
-      /*on linux it's almost the same as on mac*/
+      /*on linux it's almost the same as on mac
+      * or use cat /proc/meminfo */
     }
     LOGGER.debug("Detected Memory Information: " + mem);
     r.setMemory(mem);

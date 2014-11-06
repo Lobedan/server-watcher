@@ -28,7 +28,7 @@ import de.server.watcher.utils.CommandLineUtils;
 public abstract class AbstractDetector {
   private static final Logger LOGGER = Logger.getLogger(AbstractDetector.class);
 
-  private static final String[] MAC_COMMAND = { "sysctl machdep hw", "vm_stat" };
+  private static final String[] MAC_COMMAND = { "sysctl machdep hw", "vm_stat", "ipconfig getpacket en0" };
   private static final String[] LINUX_COMMAND = { "lscpu", "cat /proc/cpuinfo" };
 
   public abstract void detect() throws Exception;
@@ -41,6 +41,17 @@ public abstract class AbstractDetector {
   public Map<String, String> watchMacMemory() throws Exception {
     String commandOutput = CommandLineUtils.execToString(MAC_COMMAND[1]);
     return createMap(commandOutput);
+  }
+
+  public Map<String, String> watchMacNetwork() throws Exception {
+    String sb = CommandLineUtils.execToString(MAC_COMMAND[2]);
+    String[] split = sb.split("options:");
+    Map<String, String> first = createMap(split[0], "=");
+    split[1] = split[1].replace("Options count is", "Options count is:");
+    first.putAll(createMap(split[1]));
+
+    LOGGER.debug(first);
+    return first;
   }
 
   public Map<String, String> watchWindows() throws Exception {
@@ -67,7 +78,6 @@ public abstract class AbstractDetector {
     }
     return sysPropeties;
   }
-
 
   public String convertFrequency(String value) {
     String[] si = { "Hz", "kHz", "MHz", "GHz", "PHz", "THz" };

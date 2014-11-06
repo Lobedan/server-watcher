@@ -34,7 +34,6 @@ public class CpuDetector extends AbstractDetector {
     String osName = System.getProperty("os.name");
     if (osName.contains("Mac")) {
       propertiesMap = super.watchMac();
-
       cpu
           .setBrand(propertiesMap.get("machdep.cpu.brand_string"))
           .setCores(Integer.valueOf(propertiesMap.get("machdep.cpu.core_count")))
@@ -48,7 +47,6 @@ public class CpuDetector extends AbstractDetector {
       //TODO: detect properties on windows
     } else {
       propertiesMap = super.watchLinux();
-      LOGGER.error(propertiesMap);
       cpu
           .setBrand(propertiesMap.get("model name"))
           .setCores(Integer.valueOf(propertiesMap.get("cpu cores")))
