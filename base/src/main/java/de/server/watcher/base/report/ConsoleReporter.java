@@ -50,10 +50,8 @@ public class ConsoleReporter extends AbstractReporter {
       sb.append("//======= CPU INFORMATION =======//").append("\n");
       sb.append("CPU Name: ").append(cpu.getBrand()).append("\n");
       sb.append("Architecture: ").append(cpu.getArchitecture()).append((cpu.isBit64()) ? "x64" : "x86").append("\n");
-      sb.append("Running @ ").append(cpu.getCores()).append("x").append(cpu.getCpuFrequency()).append(System.getProperty(
-          "\n"));
-      sb.append("Max Available @ ").append(cpu.getCores()).append("x").append(cpu.getMaxCpuFrequency()).append(System.getProperty(
-          "\n"));
+      sb.append("Running @ ").append(cpu.getCores()).append("x").append(cpu.getCpuFrequency()).append("\n");
+      sb.append("Max Available @ ").append(cpu.getCores()).append("x").append(cpu.getMaxCpuFrequency()).append("\n");
       sb.append("Max virtual Cores: ").append(cpu.getVirtualCores()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getMemory())) {
