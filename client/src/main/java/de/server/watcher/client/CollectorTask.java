@@ -48,6 +48,8 @@ public class CollectorTask {
       LOGGER.debug(DetectorResultMetaHolder.instance().get());
       LOGGER.info("Collected data successfully invoking reporters");
       reporterService.execute();
+    } else {
+      LOGGER.error("No informations found, please check your system");
     }
   }
 }
