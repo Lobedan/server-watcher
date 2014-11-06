@@ -56,7 +56,7 @@ public class CpuDetector extends AbstractDetector {
           .setBit64((propertiesMap.get("CPU op-mode(s)").contains("64")))
           .setArchitecture(propertiesMap.get("Architecture"));
     }
-    LOGGER.debug("Detected Cpu Information: " + cpu);
+    LOGGER.info("Detected Cpu Information: " + cpu);
     r.setCpu(cpu);
   }
 }

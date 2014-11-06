@@ -31,7 +31,7 @@ public class CollectorTask {
   private static final Logger LOGGER = Logger.getLogger(CollectorTask.class);
 
   @Autowired
-  @Qualifier("default")
+  @Qualifier("defaultDetectorService")
   private DetectorService detectorService;
 
   @Autowired

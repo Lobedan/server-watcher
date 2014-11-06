@@ -18,6 +18,7 @@ public class DefaultDetectorService implements DetectorService {
   private List<AbstractDetector> detectors;
 
   public void execute() throws Exception {
+    LOGGER.info("got " + detectors.size() + " Detectors: " + detectors);
     for (AbstractDetector a : detectors) {
       a.detect();
     }

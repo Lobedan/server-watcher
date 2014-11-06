@@ -31,6 +31,6 @@ public class OsDetector extends AbstractDetector {
           .setVersion(System.getProperty("os.version"))
           .setArchitecture(System.getProperty("os.arch"));
     r.setOs(os);
-    LOGGER.debug("Detected OS Information: " + os);
+    LOGGER.info("Detected OS Information: " + os);
   }
 }
