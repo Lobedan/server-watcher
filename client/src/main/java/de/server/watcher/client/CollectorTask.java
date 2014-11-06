@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -30,6 +31,7 @@ public class CollectorTask {
   private static final Logger LOGGER = Logger.getLogger(CollectorTask.class);
 
   @Autowired
+  @Qualifier("default")
   private DetectorService detectorService;
 
   @Autowired

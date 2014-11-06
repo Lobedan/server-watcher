@@ -27,6 +27,6 @@ public class CommandLineUtils {
     PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
     exec.setStreamHandler(streamHandler);
     exec.execute(commandline);
-    return(outputStream.toString());
+    return outputStream.toString();
   }
 }

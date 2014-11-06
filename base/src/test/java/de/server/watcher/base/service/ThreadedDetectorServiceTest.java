@@ -19,7 +19,7 @@ import de.server.watcher.base.detector.OsDetector;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = BaseApplication.class)
-public class DefaultDetectorServiceTest {
+public class ThreadedDetectorServiceTest {
 
   @Autowired
   private DetectorService service;
