@@ -53,7 +53,7 @@ public class MemoryDetector extends AbstractDetector {
       /*on linux it's almost the same as on mac
       * or use cat /proc/meminfo */
     }
-    LOGGER.info("Detected Memory Information: " + mem);
+    LOGGER.debug("Detected Memory Information: " + mem);
     r.setMemory(mem);
   }
 }

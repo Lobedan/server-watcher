@@ -47,7 +47,7 @@ public class NetworkDetector extends AbstractDetector {
     } else {
       propertiesMap = super.watchLinux();
     }
-    LOGGER.info("Detected Network Information: " + net);
+    LOGGER.debug("Detected Network Information: " + net);
     r.setNetwork(net);
   }
 }

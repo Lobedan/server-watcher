@@ -32,7 +32,7 @@ public class JvmDetector extends AbstractDetector {
         .setJavaVMSpec(System.getProperty("java.vm.specification.version"))
         .setJavaHome(System.getProperty("java.home"));
 
-    LOGGER.info("Detected JVM Information: " + jvm);
+    LOGGER.debug("Detected JVM Information: " + jvm);
     r.setJvm(jvm);
   }
 }

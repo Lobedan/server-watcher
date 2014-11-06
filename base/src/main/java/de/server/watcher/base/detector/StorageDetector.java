@@ -21,6 +21,6 @@ public class StorageDetector extends AbstractDetector {
 
   @Override
   public void detect() {
-    LOGGER.info("Detect @ Storage");
+    LOGGER.debug("Detect @ Storage");
   }
 }

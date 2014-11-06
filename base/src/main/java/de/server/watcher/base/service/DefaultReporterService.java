@@ -31,7 +31,7 @@ public class DefaultReporterService implements ReporterService {
       new Thread(new Runnable() {
         @Override
         public void run() {
-          LOGGER.info("Running in thread " + Thread.currentThread());
+          LOGGER.info("Running Reporter " + a.getClass().getSimpleName());
           a.prepare();
           a.sendReport();
         }

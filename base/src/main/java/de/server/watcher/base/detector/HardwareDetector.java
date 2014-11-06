@@ -21,6 +21,6 @@ public class HardwareDetector extends AbstractDetector {
 
   @Override
   public void detect() {
-    LOGGER.info("Detect @ Hardware");
+    LOGGER.debug("Detect @ Hardware");
   }
 }

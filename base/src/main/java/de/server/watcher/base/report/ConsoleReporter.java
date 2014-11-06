@@ -14,10 +14,15 @@ import de.server.watcher.base.annotation.Reporter;
 
 /**
  * Created by svenklemmer on 04.11.14.
+ *
+ * ConsoleReporter just takes all information and
+ * puts them in a nice clean format and prints them via LOGGER.info
  */
 @Reporter
 public class ConsoleReporter extends AbstractReporter {
   private static final Logger LOGGER = Logger.getLogger(ConsoleReporter.class);
+
+  private StringBuilder sb = new StringBuilder();
 
   @Override
   public void prepare() {

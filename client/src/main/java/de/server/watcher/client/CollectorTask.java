@@ -20,7 +20,9 @@ import de.server.watcher.base.service.ReporterService;
  * CollectorService is the main part of this application
  * it collects all data with {@link de.server.watcher.base.detector.AbstractDetector} extending
  * classes (annotated with {@link de.server.watcher.base.annotation.Detector})
- * detectors are called via the {@link de.server.watcher.base.service.DetectorService}
+ *
+ * detectors are called via the {@link de.server.watcher.base.service.DetectorService} per default
+ * but there exists a threaded detector as well
  *
  * and sends them with {@link de.server.watcher.base.report.AbstractReporter} implementing classes
  * to the endpoints (annotated with {@link de.server.watcher.base.annotation.Reporter}
@@ -37,12 +39,12 @@ public class CollectorTask {
   @Autowired
   private ReporterService reporterService;
 
-  @Scheduled(fixedRate = 30 * 1000)
+  @Scheduled(fixedRate = 60 * 1000)
   public void collectData() throws Exception {
     String actualDate = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date());
     LOGGER.info("Start to collect Data @" + actualDate);
     detectorService.execute();
-    if (DetectorResultMetaHolder.instance().get() == null) {
+    if (DetectorResultMetaHolder.instance().get() != null) {
       LOGGER.debug(DetectorResultMetaHolder.instance().get());
       LOGGER.info("Collected data successfully invoking reporters");
       reporterService.execute();
