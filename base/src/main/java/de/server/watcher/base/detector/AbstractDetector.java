@@ -28,13 +28,18 @@ import de.server.watcher.utils.CommandLineUtils;
 public abstract class AbstractDetector {
   private static final Logger LOGGER = Logger.getLogger(AbstractDetector.class);
 
-  private static final String MAC_COMMAND = "sysctl machdep hw";
+  private static final String[] MAC_COMMAND = { "sysctl machdep hw", "vm_stat" };
   private static final String[] LINUX_COMMAND = { "lscpu", "cat /proc/cpuinfo" };
 
   public abstract void detect() throws Exception;
 
   public Map<String, String> watchMac() throws Exception {
-    String commandOutput = CommandLineUtils.execToString(MAC_COMMAND);
+    String commandOutput = CommandLineUtils.execToString(MAC_COMMAND[0]);
+    return createMap(commandOutput);
+  }
+
+  public Map<String, String> watchMacMemory() throws Exception {
+    String commandOutput = CommandLineUtils.execToString(MAC_COMMAND[1]);
     return createMap(commandOutput);
   }
 
@@ -61,5 +66,29 @@ public abstract class AbstractDetector {
       sysPropeties.put(array[0].trim(), array[1].trim());
     }
     return sysPropeties;
+  }
+
+
+  public String convertFrequency(String value) {
+    String[] si = { "Hz", "kHz", "MHz", "GHz", "PHz", "THz" };
+    double f = Double.parseDouble(value);
+    int step = 0;
+    while (f > 1000) {
+      f /= 1000;
+      step++;
+    }
+    return f + " " + si[step];
+  }
+
+  public String convertMhzToGHz(String value) {
+    double f = Double.parseDouble(value);
+    f /= 1000;
+    return f + " Ghz";
+  }
+
+  public String convertMbToGb(String value) {
+    double f = Double.parseDouble(value);
+    f /= 1024;
+    return f + " GB";
   }
 }

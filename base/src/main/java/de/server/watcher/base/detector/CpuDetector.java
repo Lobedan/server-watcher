@@ -61,21 +61,4 @@ public class CpuDetector extends AbstractDetector {
     LOGGER.debug("Detected Cpu Information: " + cpu);
     r.setCpu(cpu);
   }
-
-  private String convertFrequency(String value) {
-    String[] si = { "Hz", "kHz", "MHz", "GHz", "PHz", "THz" };
-    double f = Double.parseDouble(value);
-    int step = 0;
-    while (f > 1000) {
-      f /= 1000;
-      step++;
-    }
-    return f + " " + si[step];
-  }
-
-  private String convertMhzToGHz(String value) {
-    double f = Double.parseDouble(value);
-    f /= 1000;
-    return f + " Ghz";
-  }
 }

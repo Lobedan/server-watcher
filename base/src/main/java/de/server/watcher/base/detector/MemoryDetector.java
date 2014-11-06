@@ -8,9 +8,16 @@
  */
 package de.server.watcher.base.detector;
 
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
+import de.server.watcher.base.domain.Memory;
+import de.server.watcher.base.domain.Result;
+import de.server.watcher.base.metaholder.DetectorResultMetaHolder;
 
 /**
  * Created by svenklemmer on 04.11.14.
@@ -20,7 +27,32 @@ public class MemoryDetector extends AbstractDetector {
   private static final Logger LOGGER = Logger.getLogger(MemoryDetector.class);
 
   @Override
-  public void detect() {
-    LOGGER.info("Detect @ Memory");
+  public void detect() throws Exception {
+    Result r = DetectorResultMetaHolder.instance().get();
+    Memory mem = new Memory();
+
+    Map<String, String> propertiesMap;
+
+    String osName = System.getProperty("os.name");
+    if (osName.contains("Mac")) {
+      propertiesMap = Maps.newHashMap();
+      for (Map.Entry<String, String> entry : super.watchMacMemory().entrySet()) {
+        propertiesMap.put(entry.getKey(), entry.getValue().replace(".", "").trim());
+      }
+      propertiesMap.putAll(super.watchMac());
+      mem
+          .setFreeMemSize(convertMbToGb(propertiesMap.get("Pages free")))
+          .setUsedMemSize(convertMbToGb(propertiesMap.get("Pages active")))
+          .setMaxMemSize(convertMbToGb(propertiesMap.get("hw.memsize")));
+
+    } else if (osName.contains("Windows")) {
+      propertiesMap = super.watchWindows();
+      //TODO: detect properties on windows
+    } else {
+      propertiesMap = super.watchLinux();
+      /*on linux it's almost the same as on mac*/
+    }
+    LOGGER.debug("Detected Memory Information: " + mem);
+    r.setMemory(mem);
   }
 }
