@@ -43,21 +43,22 @@ public class ConsoleReporter extends AbstractReporter {
 
     sb.append("SERVER-WATCHER: ");
     sb.append("Detection @ ");
-    sb.append(new SimpleDateFormat("dd.MM.yyyy HH:mm:SS").format(new Date()));
+    sb.append(new SimpleDateFormat("dd.MM.yyyy HH:mm:SS").format(new Date())).append("\n");
 
     if (AssertionUtils.isNotNull(result.getCpu())) {
       Cpu cpu = result.getCpu();
       sb.append("//======= CPU INFORMATION =======//").append("\n");
       sb.append("CPU Name: ").append(cpu.getBrand()).append("\n");
-      sb.append("Architecture: ").append(cpu.getArchitecture()).append((cpu.isBit64()) ? "x64" : "x86").append("\n");
-      sb.append("Running @ ").append(cpu.getCores()).append("x").append(cpu.getCpuFrequency()).append("\n");
-      sb.append("Max Available @ ").append(cpu.getCores()).append("x").append(cpu.getMaxCpuFrequency()).append("\n");
+      sb.append("Architecture: ").append(cpu.getArchitecture()).append("\n");
+      sb.append("64 Bit Support?: ").append((cpu.isBit64()) ? "yes" : "no").append("\n");
+      sb.append("Running ").append(cpu.getCores()).append("x @").append(cpu.getCpuFrequency()).append("\n");
+      sb.append("Max Available ").append(cpu.getCores()).append("x @").append(cpu.getMaxCpuFrequency()).append("\n");
       sb.append("Max virtual Cores: ").append(cpu.getVirtualCores()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getMemory())) {
       Memory mem = result.getMemory();
       sb.append("//======= Memory INFORMATION =======//").append("\n");
-      sb.append("Free Memory Name: ").append(mem.getFreeMemSize()).append("\n");
+      sb.append("Free Memory: ").append(mem.getFreeMemSize()).append("\n");
       sb.append("Used Memory: ").append(mem.getUsedMemSize()).append("\n");
       sb.append("Total Memory: ").append(mem.getMaxMemSize()).append("\n");
     }
