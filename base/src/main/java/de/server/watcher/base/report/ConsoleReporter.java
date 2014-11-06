@@ -8,6 +8,9 @@
  */
 package de.server.watcher.base.report;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Reporter;
@@ -38,66 +41,70 @@ public class ConsoleReporter extends AbstractReporter {
   public void prepare() {
     DetectorResult result = DetectorResultMetaHolder.instance().get();
 
+    sb.append("SERVER-WATCHER: ");
+    sb.append("Detection @ ");
+    sb.append(new SimpleDateFormat("dd.MM.yyyy HH:mm:SS").format(new Date()));
+
     if (AssertionUtils.isNotNull(result.getCpu())) {
       Cpu cpu = result.getCpu();
-      sb.append("//======= CPU INFORMATION =======//").append(System.getProperty("\n"));
-      sb.append("CPU Name: ").append(cpu.getBrand()).append(System.getProperty("\n"));
-      sb.append("Architecture: ").append(cpu.getArchitecture()).append((cpu.isBit64()) ? "x64" : "x86").append(System.getProperty("\n"));
+      sb.append("//======= CPU INFORMATION =======//").append("\n");
+      sb.append("CPU Name: ").append(cpu.getBrand()).append("\n");
+      sb.append("Architecture: ").append(cpu.getArchitecture()).append((cpu.isBit64()) ? "x64" : "x86").append("\n");
       sb.append("Running @ ").append(cpu.getCores()).append("x").append(cpu.getCpuFrequency()).append(System.getProperty(
           "\n"));
       sb.append("Max Available @ ").append(cpu.getCores()).append("x").append(cpu.getMaxCpuFrequency()).append(System.getProperty(
           "\n"));
-      sb.append("Max virtual Cores: ").append(cpu.getVirtualCores()).append(System.getProperty("\n"));
+      sb.append("Max virtual Cores: ").append(cpu.getVirtualCores()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getMemory())) {
       Memory mem = result.getMemory();
-      sb.append("//======= Memory INFORMATION =======//").append(System.getProperty("\n"));
-      sb.append("Free Memory Name: ").append(mem.getFreeMemSize()).append(System.getProperty("\n"));
-      sb.append("Used Memory: ").append(mem.getUsedMemSize()).append(System.getProperty("\n"));
-      sb.append("Total Memory: ").append(mem.getMaxMemSize()).append(System.getProperty("\n"));
+      sb.append("//======= Memory INFORMATION =======//").append("\n");
+      sb.append("Free Memory Name: ").append(mem.getFreeMemSize()).append("\n");
+      sb.append("Used Memory: ").append(mem.getUsedMemSize()).append("\n");
+      sb.append("Total Memory: ").append(mem.getMaxMemSize()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getStorage())) {
       Storage disk = result.getStorage();
-      sb.append("//======= Storage INFORMATION =======//").append(System.getProperty("\n"));
+      sb.append("//======= Storage INFORMATION =======//").append("\n");
       /*sb.append("Free Memory Name: ").append(mem.getFreeMemSize());
       sb.append("Used Memory: ").append(mem.getUsedMemSize());
       sb.append("Total Memory: ").append(mem.getMaxMemSize());*/
     }
     if (AssertionUtils.isNotNull(result.getNetwork())) {
       Network net = result.getNetwork();
-      sb.append("//======= Network INFORMATION =======//").append(System.getProperty("\n"));
-      sb.append("Domain: ").append(net.getDomainName()).append(System.getProperty("\n"));
-      sb.append("Hostname: ").append(net.getHostname()).append(System.getProperty("\n"));
-      sb.append("Public IP: ").append(net.getIpAdress()).append(System.getProperty("\n"));
-      sb.append("Mac Adresse ").append(net.getMacAdress()).append(System.getProperty("\n"));
-      sb.append("Subnetmask ").append(net.getSubnet()).append(System.getProperty("\n"));
+      sb.append("//======= Network INFORMATION =======//").append("\n");
+      sb.append("Domain: ").append(net.getDomainName()).append("\n");
+      sb.append("Hostname: ").append(net.getHostname()).append("\n");
+      sb.append("Public IP: ").append(net.getIpAdress()).append("\n");
+      sb.append("Mac Adresse ").append(net.getMacAdress()).append("\n");
+      sb.append("Subnetmask ").append(net.getSubnet()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getHardware())) {
       Hardware hard = result.getHardware();
-      sb.append("//======= Hardware INFORMATION =======//").append(System.getProperty("\n"));
+      sb.append("//======= Hardware INFORMATION =======//").append("\n");
     }
     if (AssertionUtils.isNotNull(result.getOs())) {
       Os os = result.getOs();
-      sb.append("//======= Operating System INFORMATION =======//").append(System.getProperty("\n"));
-      sb.append("Name: ").append(os.getName()).append(System.getProperty("\n"));
-      sb.append("Version: ").append(os.getVersion()).append(System.getProperty("\n"));
-      sb.append("Architecture: ").append(os.getArchitecture()).append(System.getProperty("\n"));
+      sb.append("//======= Operating System INFORMATION =======//").append("\n");
+      sb.append("Name: ").append(os.getName()).append("\n");
+      sb.append("Version: ").append(os.getVersion()).append("\n");
+      sb.append("Architecture: ").append(os.getArchitecture()).append("\n");
     }
     if (AssertionUtils.isNotNull(result.getJvm())) {
       Jvm jvm = result.getJvm();
-      sb.append("//======= Java Virtual Machine INFORMATION =======//").append(System.getProperty("\n"));
-      sb.append("Java VM Name: ").append(jvm.getJavaVMName()).append(System.getProperty("\n"));
-      sb.append("Java VM Version: ").append(jvm.getJavaVMVersion()).append(System.getProperty("\n"));
-      sb.append("Java VM Spec: ").append(jvm.getJavaVMSpec()).append(System.getProperty("\n"));
+      sb.append("//======= Java Virtual Machine INFORMATION =======//").append("\n");
+      sb.append("Java VM Name: ").append(jvm.getJavaVMName()).append("\n");
+      sb.append("Java VM Version: ").append(jvm.getJavaVMVersion()).append("\n");
+      sb.append("Java VM Spec: ").append(jvm.getJavaVMSpec()).append("\n");
 
-      sb.append("Java Runtime Name: ").append(jvm.getJavaRuntimeName()).append(System.getProperty("\n"));
-      sb.append("Java Runtime Version: ").append(jvm.getJavaRuntimeVersion()).append(System.getProperty("\n"));
+      sb.append("Java Runtime Name: ").append(jvm.getJavaRuntimeName()).append("\n");
+      sb.append("Java Runtime Version: ").append(jvm.getJavaRuntimeVersion()).append("\n");
 
-      sb.append("Java Version: ").append(jvm.getJavaVersion()).append(System.getProperty("\n"));
-      sb.append("Java Class Version: ").append(jvm.getJavaClassVersion()).append(System.getProperty("\n"));
+      sb.append("Java Version: ").append(jvm.getJavaVersion()).append("\n");
+      sb.append("Java Class Version: ").append(jvm.getJavaClassVersion()).append("\n");
 
-      sb.append("Java Home Path: ").append(jvm.getJavaHome()).append(System.getProperty("\n"));
-      sb.append("Java Tmp Dir: ").append(jvm.getJavaTmpDir()).append(System.getProperty("\n"));
+      sb.append("Java Home Path: ").append(jvm.getJavaHome()).append("\n");
+      sb.append("Java Tmp Dir: ").append(jvm.getJavaTmpDir()).append("\n");
     }
   }
 
