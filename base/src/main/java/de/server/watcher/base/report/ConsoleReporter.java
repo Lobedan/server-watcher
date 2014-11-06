@@ -41,9 +41,8 @@ public class ConsoleReporter extends AbstractReporter {
   public void prepare() {
     DetectorResult result = DetectorResultMetaHolder.instance().get();
 
-    sb.append("SERVER-WATCHER: ");
-    sb.append("Detection @ ");
-    sb.append(new SimpleDateFormat("dd.MM.yyyy HH:mm:SS").format(new Date())).append("\n");
+    sb.append("SERVER-WATCHER: Detection @ ");
+    sb.append(new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date())).append("\n");
 
     if (AssertionUtils.isNotNull(result.getCpu())) {
       Cpu cpu = result.getCpu();
