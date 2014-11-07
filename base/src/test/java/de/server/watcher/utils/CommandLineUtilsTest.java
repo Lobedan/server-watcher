@@ -18,7 +18,7 @@ public class CommandLineUtilsTest {
 
   @Test
   public void testCanCaptureCommandLineOutput() throws Exception {
-    String output = CommandLineUtils.execToString("ls");
+    String output = CommandLineUtils.execToString("cd /");
     assertThat(output.length(), is(greaterThan(0)));
   }
 }
