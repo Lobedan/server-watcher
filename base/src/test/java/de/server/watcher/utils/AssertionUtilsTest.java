@@ -38,4 +38,48 @@ public class AssertionUtilsTest {
     assertThat(AssertionUtils.isNull(obj), is(false));
     assertThat(AssertionUtils.isNull(nullObject), is(true));
   }
+
+  @Test
+  public void testCanCheckTwoIntsEqual() throws Exception {
+    int a = 1;
+    int b = 1;
+    assertThat((a == b), is(AssertionUtils.equal(a, b)));
+  }
+
+  @Test
+  public void testCanCheckTwoObjectsEqual() throws Exception {
+    Object a = new Object();
+    Object b = a;
+    assertThat((a.equals(b)), is(AssertionUtils.equal(a,b)));
+  }
+
+  @Test
+  public void testCanCheckTwoIntsNotEqual() throws Exception {
+    int a = 1;
+    int b = 2;
+    assertThat((a != b), is(AssertionUtils.notEqual(a, b)));
+  }
+
+  @Test
+  public void testCanCheckTwoObjectsNotEqual() throws Exception {
+    Object a = new Object();
+    Object b = new Object();
+    assertThat((!a.equals(b)), is(AssertionUtils.notEqual(a, b)));
+  }
+
+  @Test
+  public void testCanCheckEqualityOfStrings() throws Exception {
+    String a = "String a";
+    String b = "String b";
+    assertThat(!a.equals(b), is(AssertionUtils.notEqual(a, b)));
+    assertThat(a.equals(a), is(AssertionUtils.equal(a, a)));
+  }
+
+  @Test
+  public void testCanCheckEmptyStrings() throws Exception {
+    String a = "";
+    String b = "a";
+    assertThat(a.isEmpty(), is(AssertionUtils.isEmpty(a)));
+    assertThat(!b.isEmpty(), is(AssertionUtils.isNotEmpty(b)));
+  }
 }

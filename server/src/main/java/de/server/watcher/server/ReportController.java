@@ -28,11 +28,11 @@ public class ReportController {
   @RequestMapping(
       value = "/receive",
       consumes = MediaType.APPLICATION_JSON_VALUE,
-      method = RequestMethod.PUT,
+      method = RequestMethod.POST,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public HttpStatus receive(DetectorResult payload) throws Exception {
-
+    LOGGER.info("got Object " + payload);
     return HttpStatus.ACCEPTED;
   }
 }

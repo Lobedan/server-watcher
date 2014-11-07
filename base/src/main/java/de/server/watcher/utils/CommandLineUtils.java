@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.log4j.Logger;
 
@@ -26,7 +27,13 @@ public class CommandLineUtils {
     DefaultExecutor exec = new DefaultExecutor();
     PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
     exec.setStreamHandler(streamHandler);
-    exec.execute(commandline);
+    int exitValue = 0;
+    try {
+      exitValue = exec.execute(commandline);
+    } catch (ExecuteException e) {
+      LOGGER.error("Process exited with value 1 -> there are no informations");
+      return "";
+    }
     return outputStream.toString();
   }
 }

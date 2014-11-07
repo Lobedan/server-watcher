@@ -16,6 +16,7 @@ import com.google.common.collect.Maps;
 import org.apache.log4j.Logger;
 
 import de.server.watcher.base.annotation.Detector;
+import de.server.watcher.utils.AssertionUtils;
 import de.server.watcher.utils.CommandLineUtils;
 
 /**
@@ -45,13 +46,15 @@ public abstract class AbstractDetector {
 
   public Map<String, String> watchMacNetwork() throws Exception {
     String sb = CommandLineUtils.execToString(MAC_COMMAND[2]);
-    String[] split = sb.split("options:");
-    Map<String, String> first = createMap(split[0], "=");
-    split[1] = split[1].replace("Options count is", "Options count is:");
-    first.putAll(createMap(split[1]));
-
-    LOGGER.debug(first);
-    return first;
+    if (AssertionUtils.isNotEmpty(sb)) {
+      String[] split = sb.split("options:");
+      Map<String, String> first = createMap(split[0], "=");
+      split[1] = split[1].replace("Options count is", "Options count is:");
+      first.putAll(createMap(split[1]));
+      LOGGER.debug(first);
+      return first;
+    }
+    return Maps.newHashMap();
   }
 
   public Map<String, String> watchWindows() throws Exception {
