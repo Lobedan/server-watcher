@@ -15,9 +15,9 @@ import de.server.watcher.base.domain.DetectorResult;
 
 /**
  * Created by svenklemmer on 04.11.14.
- *
+ * <p/>
  * Singleton to hold only one instance of results
- *
+ * <p/>
  * it holts the {@link de.server.watcher.base.domain.DetectorResult} object
  * while collecting data
  */
@@ -36,6 +36,7 @@ public final class DetectorResultMetaHolder {
 
   /**
    * if there is no instance available create a new one
+   *
    * @return the only existing instance
    */
   public static DetectorResultMetaHolder instance() {
@@ -52,9 +53,9 @@ public final class DetectorResultMetaHolder {
     return detectorResult;
   }
 
-
   /**
    * Set DetectorResult object instead of existing one
+   *
    * @param aDetectorResult result object to set
    */
   public void set(DetectorResult aDetectorResult) {
@@ -69,7 +70,7 @@ public final class DetectorResultMetaHolder {
    * @param res to merge into holding result object
    * @return merged Result object
    */
-  public DetectorResult merge (DetectorResult res) {
+  public DetectorResult merge(DetectorResult res) {
     return new DetectorResult();
   }
 

@@ -10,6 +10,7 @@ public class AssertionUtils {
 
   /**
    * Checks if object is not null
+   *
    * @param object to check
    * @return true if not, otherwise false
    */
@@ -19,6 +20,7 @@ public class AssertionUtils {
 
   /**
    * checks if object is null
+   *
    * @param object to check
    * @return false if not, otherwise true
    */
@@ -55,7 +57,9 @@ public class AssertionUtils {
    * @param b second string
    * @return true if equal otherwise false
    */
-  public static boolean equal(String a, String b) { return (a.equals(b)); }
+  public static boolean equal(String a, String b) {
+    return (a.equals(b));
+  }
 
   /**
    * assert if two integer are not equal
@@ -86,7 +90,9 @@ public class AssertionUtils {
    * @param b second string
    * @return true if not equal, otherwise false
    */
-  public static boolean notEqual(String a, String b) { return !equal(a, b); }
+  public static boolean notEqual(String a, String b) {
+    return !equal(a, b);
+  }
 
   /**
    * assert if a string is empty
@@ -95,7 +101,9 @@ public class AssertionUtils {
    * @param a string to check
    * @return true if empty otherwise false
    */
-  public static boolean isEmpty(String a) { return a.isEmpty(); }
+  public static boolean isEmpty(String a) {
+    return a.isEmpty();
+  }
 
   /**
    * assert if a string is not empty
@@ -104,5 +112,7 @@ public class AssertionUtils {
    * @param a string to check
    * @return true if not empty otherwise false
    */
-  public static boolean isNotEmpty(String a) { return !isEmpty(a); }
+  public static boolean isNotEmpty(String a) {
+    return !isEmpty(a);
+  }
 }
