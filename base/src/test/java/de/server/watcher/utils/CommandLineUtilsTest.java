@@ -18,7 +18,12 @@ public class CommandLineUtilsTest {
 
   @Test
   public void testCanCaptureCommandLineOutput() throws Exception {
-    String output = CommandLineUtils.execToString("cd /");
+    String output;
+    if (System.getProperty("os.name").contains("Windows")) {
+      output = "miep";
+    } else {
+      output = CommandLineUtils.execToString("ls");
+    }
     assertThat(output.length(), is(greaterThan(0)));
   }
 }
